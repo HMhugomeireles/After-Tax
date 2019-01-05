@@ -10,8 +10,8 @@
 
 ## Versioning
 
-Fontend: 1.0.0
-Backend: 0.45.0[in development]
+* Fontend: 1.0.0
+* Backend: 0.45.0[in development]
 
 ## Authors
 

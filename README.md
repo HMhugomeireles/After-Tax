@@ -6,12 +6,12 @@
 
 ## Built With
 
-##Frontend
+## Frontend
 [Javascript]
 [Html]
 [Bootstrap]
 
-###Backend
+### Backend
 [NodeJs]
 [Express]
 [MongoDB]

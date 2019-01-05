@@ -34,7 +34,7 @@ app.use((req, res, next) => {
     next();
 })
 
-// entry point
+// wired routes to app
 app.use('/unmarried', unMarriedRouter);
 app.use('/married', marriedRouter);
 

@@ -1,19 +1,17 @@
-# Afther-Tax
+# After-Tax[in development]
 
 ## Webpage
 
-<a href="https://hmhugomeireles.github.io/Afther-Tax/">Rock Paper Scissors</a>
+
 
 ## Built With
 
-* [Html]
-* [Css]
-* [Javasvript]
 
 
 ## Versioning
 
-1.0.0
+Fontend: 1.0.0
+Backend: 0.45.0[in development]
 
 ## Authors
 

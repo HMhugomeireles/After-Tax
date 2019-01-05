@@ -6,7 +6,15 @@
 
 ## Built With
 
+##Frontend
+[Javascript]
+[Html]
+[Bootstrap]
 
+###Backend
+[NodeJs]
+[Express]
+[MongoDB]
 
 ## Versioning
 

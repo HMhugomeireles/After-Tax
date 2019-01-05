@@ -4,16 +4,16 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-
+// Routers
 const unMarriedRouter = require('./api/routes/unmarried');
 const marriedRouter = require('./api/routes/married');
 
-const mongoDB = 'mongodb://aftertax:apirest2018tax@cluster0-shard-00-00-vhziy.mongodb.net:27017,cluster0-shard-00-01-vhziy.mongodb.net:27017,cluster0-shard-00-02-vhziy.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true';
+// MongoDB Atlas Connection
+const mongoDB = require('./configs/config_dev').mongoURI;
+mongoose.connect(mongoDB, { useNewUrlParser: true })
+        .then(() => console.log('MongoDB Atlas Connect.'));
 
-mongoose.connect(mongoDB, { useNewUrlParser: true }).then(() => console.log('MongoDB Atlas Connect.'));
-mongoose.Promise = global.Promise;
 const db = mongoose.connection;
-
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 

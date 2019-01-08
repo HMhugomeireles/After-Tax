@@ -2,13 +2,34 @@ const mongoose = require('mongoose');
 
 const modelSchema = mongoose.Schema({
     _id: mongoose.Types.ObjectId,
-    tier: Number,
-    children0: Number,
-    children1: Number,
-    children2: Number,
-    children3: Number,
-    children4: Number,
-    children5: Number,
-});
+    tier: {
+        type: Number,
+        required: true
+    },
+    children0: {
+        type: Number,
+        required: true
+    },
+    children1: {
+        type: Number,
+        required: true
+    },
+    children2: {
+        type: Number,
+        required: true
+    },
+    children3: {
+        type: Number,
+        required: true
+    },
+    children4: {
+        type: Number,
+        required: true
+    },
+    children5: {
+        type: Number,
+        required: true
+    }
+}, {timestamps: true} );
 
 module.exports = mongoose.model('Unmarried', modelSchema);

@@ -30,6 +30,6 @@ const modelSchema = mongoose.Schema({
         type: Number,
         required: true
     }
-});
+}, {timestamps: true} );
 
 module.exports = mongoose.model('Married', modelSchema);

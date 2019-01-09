@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 // Routers
 const unMarriedRouter = require('./api/routes/unmarried');
 const marriedRouter = require('./api/routes/married');
+const userRouter = require('./api/routes/user');
 
 // MongoDB Atlas Connection
 const mongoDB = require('./configs/config_dev').mongoURI;
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
 // wired routes to app
 app.use('/unmarried', unMarriedRouter);
 app.use('/married', marriedRouter);
+app.use('/user', userRouter);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

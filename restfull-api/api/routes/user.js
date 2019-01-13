@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const salt = bcrypt.genSaltSync();
 
 const User = require('../models/user');
 
@@ -19,14 +19,14 @@ router.post('/signup', (req, res, next) => {
                 })
             }
 
-            bcrypt.hash('req.body.password', 11, (err, hash) => {
-        
+            bcrypt.hash(req.body.password, salt, (err, hash) => {
+
                 if (err) {
                     return res.status(500).json({
-                        error: err
+                        error: er
                     })
                 }
-        
+
                 const user = new User({
                     _id: new mongoose.Types.ObjectId(),
                     email: req.body.email,
@@ -36,7 +36,6 @@ router.post('/signup', (req, res, next) => {
                 // store in mongoDB
                 user.save()
                     .then(result => {
-                        console.log(result);
                         res.status(200).json({
                             message: 'User created'
                         });
@@ -62,8 +61,6 @@ router.post('/login', (req, res, next) => {
     User.findOne({ email: req.body.email })
         .exec()
         .then(user=> {
-            console.log(user)
-            console.log(req.body)
 
             if(user.length < 1){
                 // 409 conflict
@@ -73,7 +70,6 @@ router.post('/login', (req, res, next) => {
             }
 
             bcrypt.compare(req.body.password, user.password, (err, verify) => {
-                console.log(verify)
                 
                 if(err){
                     return res.status(401).json({
@@ -95,9 +91,9 @@ router.post('/login', (req, res, next) => {
 
         })
         .catch(err => {
-            console.log(err);
             res.status(500).json({
-                error: err
+                error: err,
+                message: 'Auth failed'
             })
         })
 })

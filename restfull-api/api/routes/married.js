@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const checkAuth = require('../middleware/checkAuth');
 
 const Married = require('../models/married');
 
@@ -70,7 +71,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 
-router.post('/', (req, res, next) => {
+router.post('/', checkAuth, (req, res, next) => {
     const married = new Unmarried({
         _id: new mongoose.Types.ObjectId(),
         tier: req.body.tier,
@@ -99,7 +100,7 @@ router.post('/', (req, res, next) => {
 })
 
 
-router.patch('/:tierId', (req, res, next) => {
+router.patch('/:tierId', checkAuth, (req, res, next) => {
     const tierId = req.params.tierId;
     const updateOps = {};
     for (const ops of req.body) {

@@ -10,7 +10,7 @@ const marriedRouter = require('./api/routes/married');
 const userRouter = require('./api/routes/user');
 
 // MongoDB Atlas Connection
-const mongoDB = require('./configs/config_dev').mongoURI;
+const mongoDB = require('./api/configs/config_dev').mongoURI;
 mongoose.connect(mongoDB, { useNewUrlParser: true })
         .then(() => console.log('MongoDB Atlas Connect.'));
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const JWT_KEY = require('../../configs/config_dev').jwtKey;
+const JWT_KEY = require('../configs/config_dev').jwtKey;
 const salt = bcrypt.genSaltSync();
 
 const User = require('../models/user');

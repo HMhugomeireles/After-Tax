@@ -3,64 +3,41 @@ const mongoose = require('mongoose');
 const Unmarried = require('../models/unmarried');
 const checkAuth = require('../middleware/checkAuth');
 
-exports.getAll = (req, res, next) => {
+const Util = require('../models/fc-util');
+
+exports.getAll = async (req, res, next) => {
     Unmarried.find()
         .select('-__v -createdAt')
         .exec()
         .then(list => {
-            const response = {
-                count: list.length,
-                tiers: list.map(lis => {
-                    return {
-                        id: lis.id,
-                        tier: lis.tier,
-                        childrens: [
-                            lis.children0,
-                            lis.children1,
-                            lis.children2,
-                            lis.children3,
-                            lis.children4,
-                            lis.children5
-                        ],
-                        request: {
-                            type: 'GET',
-                            url: 'http://' + req.headers.host + '/unmarried/' + lis.id
-                        },
-                        updateAt: list.updateAt
-                    }
-                })
-            }
+
+        console.log(req);
+            const response = Util.formatOutput(list, req);
             res.status(200).json(response);
+        
         })
         .catch(err => {
-            console.log(err);
+        
             res.status(500).json({
                 error: err
             })
+        
         });
 }
 
 
 exports.getById = (req, res, next) => {
+
     const id = req.params.id;
+
     Unmarried.findById(id)
         .select('-__v -createdAt')
         .exec()
         .then(doc => {
-            const tier = {
-                id: doc.id,
-                tier: doc.tier,
-                childrens: [
-                    lis.children0,
-                    lis.children1,
-                    lis.children2,
-                    lis.children3,
-                    lis.children4,
-                    lis.children5
-                ],
-                updateAt: doc.updateAt
-            }
+
+            const tier = Util.formatOneOutput(doc, req);
             res.status(200).json(tier);
+        
         })
         .catch(err => {
             console.log(err)
@@ -85,17 +62,19 @@ exports.addNew = checkAuth, (req, res, next) => {
     unmarried.increment();
     unmarried.save()
         .then(result => {
-            console.log(result)
+
             res.status(200).json({
                 message: 'Post done.',
                 insert: unmarried
             })
+        
         })
         .catch(err => {
-            console.log(err)
+        
             res.status(500).json({
                 error: err
             })
+        
         });
 }
 

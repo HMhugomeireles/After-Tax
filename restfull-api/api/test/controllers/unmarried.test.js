@@ -1,6 +1,11 @@
 const Controller = require('../../controllers/unmarried');
 
+describe('1º Get all records from data base.', () => {
 
-it('Get all records from data base.', () =>
-    expect(true).toBe(true)
-)
+    
+
+    test('test1',() => {
+        expect(true).toBe(true);
+    })
+
+})

@@ -21,7 +21,7 @@
     "supertest": "^3.4.1"
   },
   "dependencies": {
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.2"
